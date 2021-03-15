@@ -41,18 +41,23 @@ const MainDemo: React.FC = () => {
         //onRest: goNext
     }) as { t: any };
     */
+    // const aa = useSpring({
+    //     from: {
+    //         t: 0,
+    //     },
+    //     to: {
+    //         t: 1,
+    //     },
+    //     config: {
+    //         duration: 10000,
+    //     },
+    //     //onRest: goNext
+    // });
     const aa = useSpring({
-        from: {
-            t: 0,
-        },
-        to: {
-            t: 1,
-        },
-        config: {
-            duration: 10000,
-        },
+        t: index,
         //onRest: goNext
     });
+
 
     const { t } = aa as { t: any };
 
