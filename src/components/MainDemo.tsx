@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spring, animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { interpolate } from "flubber";
 
 const MainDemo: React.FC = () => {
@@ -13,21 +13,44 @@ const MainDemo: React.FC = () => {
     const [index, setIndex] = useState(0);
 
     function goNext() {
+        console.log('1');
+        
         setIndex(i => i + 1 >= paths.length ? 0 : i + 1);
     }
+
+    const props: any = useSpring<any>({
+        from: {
+            t: 0,
+        },
+        to: {
+            t: 1,
+        },
+        onRest: goNext
+    });
+
+    console.log(props);
+    
+
 
     const interpolator = interpolate(paths[index], paths[index + 1] || paths[0], { maxSegmentLength: 0.1 });
 
     return (
-        <svg width="500" viewBox="0 0 22 22">
+        <animated.svg width="500" viewBox="0 0 22 22">
                     {/* <div>aa</div> */}
             {/* <Gradient id="gradient" /> */}
-            <g fill="url(#gradient)">
+            {/* <g fill="url(#gradient)"> */}
+{/* 
             <Spring reset native from={{ t: 0 }} to={{ t: 1 }} onRest={goNext}>
                 {({ t }: {t: any}) => <animated.path d={t.interpolate(interpolator)} />}
             </Spring>
-            </g>
-      </svg>
+ */}
+    
+            <animated.path style={props} d={props.t.interpolate(interpolator)} />
+
+            
+
+            {/* </g> */}
+        </animated.svg>
     );
 };
 
