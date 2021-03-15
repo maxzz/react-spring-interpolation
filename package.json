@@ -1,10 +1,14 @@
 {
   "name": "sprint-interpolation",
+  "description": "react-sprint interpolation",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@vx/gradient": "^0.0.199",

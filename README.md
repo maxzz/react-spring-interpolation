@@ -1,6 +1,6 @@
 ## About
 
-Shapes interpolation with React.
+Shapes interpolation with react-spring.
 
 ## Credits
 

@@ -5,7 +5,7 @@ import MainDemo from "./components/MainDemo";
 function App() {
   return (
     <div className="App">
-        <MainDemo width="300" />
+        <MainDemo width="100" />
     </div>
   );
 }
