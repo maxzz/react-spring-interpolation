@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, AnimatedValue } from 'react-spring';
 import { interpolate } from "flubber";
 
 const MainDemo: React.FC = () => {
@@ -14,11 +14,12 @@ const MainDemo: React.FC = () => {
 
     function goNext() {
         console.log('1');
-        
-        setIndex(i => i + 1 >= paths.length ? 0 : i + 1);
+        //setIndex(i => i + 1 >= paths.length ? 0 : i + 1);
+
+        setTimeout(() => setIndex(i => i + 1 >= paths.length ? 0 : i + 1), 4000);
     }
 
-    const props: any = useSpring<any>({
+    const { t } = useSpring({
         from: {
             t: 0,
         },
@@ -26,9 +27,9 @@ const MainDemo: React.FC = () => {
             t: 1,
         },
         onRest: goNext
-    });
+    }) as { t: any };
 
-    console.log(props);
+    console.log(t);
     
 
 
@@ -45,9 +46,7 @@ const MainDemo: React.FC = () => {
             </Spring>
  */}
     
-            <animated.path style={props} d={props.t.interpolate(interpolator)} />
-
-            
+            <animated.path d={t.interpolate(interpolator)} />
 
             {/* </g> */}
         </animated.svg>
