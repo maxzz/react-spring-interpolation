@@ -10,7 +10,7 @@ export default ({ command }: { command: string }) => {
     if (command === 'build') {
         config = defineConfig({
             ...config,
-            base: '/react-sprint-interpolation/',
+            base: '/react-spring-interpolation/',
         })
     }
 

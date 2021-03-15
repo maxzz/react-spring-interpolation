@@ -1,6 +1,6 @@
 {
   "name": "sprint-interpolation",
-  "description": "react-sprint interpolation",
+  "description": "react-spring interpolation",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
