@@ -14,11 +14,23 @@ const MainDemo: React.FC = () => {
 
     function goNext() {
         console.log('1');
-        //setIndex(i => i + 1 >= paths.length ? 0 : i + 1);
+        setIndex(i => i + 1 >= paths.length ? 0 : i + 1);
 
-        setTimeout(() => setIndex(i => i + 1 >= paths.length ? 0 : i + 1), 4000);
+        //setTimeout(() => setIndex(i => i + 1 >= paths.length ? 0 : i + 1), 4000);
     }
 
+    /*
+    const [ { t } ] = useSpring<{t: number}>(() => ({
+        from: {
+            t: 0,
+        },
+        to: {
+            t: 1,
+        },
+        //onRest: goNext
+    }));
+    */
+    /*
     const { t } = useSpring({
         from: {
             t: 0,
@@ -26,10 +38,25 @@ const MainDemo: React.FC = () => {
         to: {
             t: 1,
         },
-        onRest: goNext
+        //onRest: goNext
     }) as { t: any };
+    */
+    const aa = useSpring({
+        from: {
+            t: 0,
+        },
+        to: {
+            t: 1,
+        },
+        config: {
+            duration: 10000,
+        },
+        //onRest: goNext
+    });
 
-    console.log(t);
+    const { t } = aa as { t: any };
+
+    console.log(aa);
     
 
 
