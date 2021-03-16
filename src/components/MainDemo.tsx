@@ -42,4 +42,14 @@ const MainDemo: React.FC<Props> = ({width = "100"}) => {
     );
 };
 
-export default MainDemo;
+const DemoSlot: React.FC = () => {
+    const [visible, setVisible] = useState(false);
+    return (
+        <div>
+            <button onClick={() => setVisible(!visible)}>Show</button>
+            {visible && <MainDemo width="100" />}
+        </div>
+    );
+};
+
+export default DemoSlot;
