@@ -45,9 +45,13 @@ const MainDemo: React.FC<Props> = ({width = "100"}) => {
 const DemoSlot: React.FC = () => {
     const [visible, setVisible] = useState(false);
     return (
-        <div>
-            <button onClick={() => setVisible(!visible)}>Show</button>
-            {visible && <MainDemo width="100" />}
+        <div className="mt-4 mx-4 w-40 flex justify-between h-32 items-center">
+            <div className="flex-shrink-0">
+                <button className="px-2 py-1 w-28 border rounded text-base text-gray-600 hover:bg-gray-100 focus:outline-none" onClick={() => setVisible(!visible)}>
+                    {visible ? 'Hide' : 'Show morph'}
+                </button>
+            </div>
+            <div>{visible && <MainDemo width="100" />}</div>
         </div>
     );
 };
