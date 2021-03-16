@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import DemoMorphSlot from "./components/MainDemo";
+import DemoListSlot from "./components/DemoListview";
+import DemoMorphSlot from "./components/DemoMorph";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
             <DemoMorphSlot />
         </div>
         <div className="border-b">
-            <DemoMorphSlot />
+            <DemoListSlot />
         </div>
     </div>
   );
