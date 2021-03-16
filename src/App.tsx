@@ -1,11 +1,16 @@
 import React from "react";
 import "./App.css";
-import DemoSlot from "./components/MainDemo";
+import DemoMorphSlot from "./components/MainDemo";
 
 function App() {
   return (
-    <div className="App">
-        <DemoSlot />
+    <div className="App bg-gray-600 h-screen">
+        <div className="border-b">
+            <DemoMorphSlot />
+        </div>
+        <div className="border-b">
+            <DemoMorphSlot />
+        </div>
     </div>
   );
 }
