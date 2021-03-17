@@ -11,12 +11,15 @@ type Props = {
 
 const DemoListview: React.FC<Props> = ({items}) => {
     return (
-        <div className="flex px-10 py-4 w-80 overflow-x-scroll">
-            {items.map((item) => 
-                <div className="text-sm" key={item.id}>
-                    {item.title}
-                </div>
-            )}
+        <div className="w-80 px-10 py-4 bg-gray-800">
+            <div className="flex justify-items-auto w-full overflow-x-scroll bg-gray-700">
+                {items.map((item) =>
+                    <div className="ml-2 flex-1 border border-dashed" key={item.id}>
+                        <h3 className="font-bold">Title</h3>
+                        <span className="text-sm">{item.title}</span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
@@ -49,11 +52,14 @@ const cards: Card[] = [
 ];
 
 const DemoListSlot: React.FC = () => {
+    const [visible, setVisible] = React.useState(false);
     const [items, setItems] = React.useState(cards);
     return (
         <div className="mx-4 my-4">
-            <button className="px-2 py-1 border rounded text-gray-100 hover:bg-gray-500">Show</button>
-            <DemoListview items={items} />
+            <button onClick={() => setVisible(!visible)} className="px-2 py-1 border rounded text-gray-100 hover:bg-gray-500">
+                {visible ? 'Hide Listview' : 'Show Listview'}
+            </button>
+            {visible && <DemoListview items={items} />}
         </div>
     )
 }
