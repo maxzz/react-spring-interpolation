@@ -11,12 +11,12 @@ type Props = {
 
 const DemoListview: React.FC<Props> = ({items}) => {
     return (
-        <div className="w-80 px-10 py-4 bg-gray-800">
-            <div className="flex justify-items-auto w-full overflow-x-scroll bg-gray-700">
-                {items.map((item) =>
-                    <div className="ml-2 flex-1 border border-dashed" key={item.id}>
-                        <h3 className="font-bold">Title</h3>
-                        <span className="text-sm">{item.title}</span>
+        <div className="px-10 py-4 border-2 border-dotted border-red-900">
+            <div className="grid grid-flow-col auto-cols-fr overflow-x-scroll bg-gray-800">
+                {items.map((item, index) =>
+                    <div className="ml-2 w-20 border border-dashed overflow-hidden bg-gray-600" key={item.id}>
+                        <h3 className="text-sm font-bold text-green-600">Title {index + 1}</h3>
+                        <span className="text-xs">{item.title}</span>
                     </div>
                 )}
             </div>
