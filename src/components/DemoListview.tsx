@@ -14,7 +14,7 @@ const DemoListview: React.FC<Props> = ({items}) => {
         <div className="px-10 py-4 border-2 border-dotted border-red-900">
             <div className="grid grid-flow-col auto-cols-fr overflow-x-scroll bg-gray-800">
                 {items.map((item, index) =>
-                    <div className="ml-2 w-20 border border-dashed overflow-hidden bg-gray-600" key={item.id}>
+                    <div className="ml-2 border border-dashed overflow-hidden bg-gray-600" key={item.id}>
                         <h3 className="text-sm font-bold text-green-600">Title {index + 1}</h3>
                         <span className="text-xs">{item.title}</span>
                     </div>
