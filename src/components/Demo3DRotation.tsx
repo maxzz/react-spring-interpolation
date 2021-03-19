@@ -11,10 +11,19 @@ function Demo3DRotation() {
                 className="px-2 py-1 border rounded text-gray-100 hover:bg-gray-500 "
                 onClick={() => setVisible(!visible)}>{`${visible ? 'Hide' : 'Show'} render props interpolations`}
             </button>
-            <button
-                className="ml-2 px-2 py-1 border rounded text-gray-100 hover:bg-gray-500 "
-                onClick={() => setShowProps(!showProps)}>{`${showProps ? 'Hide' : 'Show'} anim props`}
-            </button>
+
+            <div className="my-2">
+                <label className="flex items-center text-sm text-gray-900">
+                    <input
+                        type="checkbox" 
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" 
+                        defaultChecked={showProps} 
+                        onClick={() => setShowProps(!showProps)}
+                    />
+                    <span className="ml-2">Show props during animation</span>
+                </label>
+            </div>
+
             {visible && <div className="pt-4 flex justify-center relative">
                 <Spring
                     from={{
@@ -22,11 +31,11 @@ function Demo3DRotation() {
                         padding: 0,
                         background: 'linear-gradient(to right, #30e8bf, #ff8235)',
                         transform: 'translate3d(100px,0,0) scale(2) rotateX(90deg)',
-                        boxShadow: '0px 100px 150px -10px #2D3747',
-                        borderBottom: '34px solid red',
+                        boxShadow: '0px 100px 150px -10px white',
+                        borderBottom: '134px solid red',
                         shape: 'M20,380 L380,380 L380,380 L200,20 L20,380 Z',
                         textShadow: '0px 5px 0px white',
-                        color: 'green',
+                        color: 'blue',
                         number: 2000,
                     }}
                     to={{
@@ -66,13 +75,12 @@ function Demo3DRotation() {
                                 className="h-40 bg-red-800 flex items-center justify-center"
                             >
                                 <animated.span className="c"> {`${!props.number ? 'Ready' : ''}`} {props.number ? props.number.toFixed(0) : ''}</animated.span>
-                                {showProps && props.number &&<div className="absolute top-0 left-0 text-green-300">
+                                {showProps && <div className="absolute top-0 left-0 text-green-300">
                                     <animated.pre className="pointer-events-none" style={{ fontSize: '8px' }}>{JSON.stringify(props, null, 4)}</animated.pre>
                                 </div>}
                             </animated.div>
                         </>)
-                    }
-                    }
+                    }}
                 </Spring>
             </div>}
         </div>
