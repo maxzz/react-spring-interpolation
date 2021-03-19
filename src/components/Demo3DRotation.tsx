@@ -4,6 +4,7 @@ import { Spring, config, animated } from 'react-spring/renderprops'
 function Demo3DRotation() {
     const [visible, setVisible] = React.useState(false);
     const [showProps, setShowProps] = React.useState(true);
+    const demoBkg = React.useRef<HTMLDivElement>(null);
 
     return (
         <div className="m-4" style={{ transformStyle: 'preserve-3d', perspective: '50px' }}>
@@ -60,6 +61,11 @@ function Demo3DRotation() {
                             default: return config.default;
                         }
                     }}
+                    onRest={() => {
+                        if (demoBkg.current) {
+                            demoBkg.current.style.backgroundColor = 'black';
+                        }
+                        console.log('Done', demoBkg)}}
                 >
                     {props => {
                         //console.log(props);
@@ -73,6 +79,7 @@ function Demo3DRotation() {
                                     transform: props.transform,
                                 }}
                                 className="h-40 bg-red-800 flex items-center justify-center"
+                                ref={demoBkg}
                             >
                                 <animated.span className="c"> {`${!props.number ? 'Ready' : ''}`} {props.number ? props.number.toFixed(0) : ''}</animated.span>
                                 {showProps && <div className="absolute top-0 left-0 text-green-300">
