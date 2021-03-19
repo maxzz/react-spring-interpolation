@@ -3,16 +3,8 @@ import { Spring, config } from 'react-spring/renderprops'
 
 function Demo3DRotation() {
     const [visible, setVisible] = React.useState(false);
-
-    const delay: any = (key: string) => {
-        switch (key) {
-            case 'color': return 2000;
-            default: return 0;
-        }
-    };
-
     return (
-        <div className="m-4">
+        <div className="m-4" style={{transformStyle: 'preserve-3d', perspective: '300px'}}>
             <button className="px-2 py-1 border rounded text-gray-100 hover:bg-gray:500" onClick={() => setVisible(!visible)}>{`${visible ? 'Hide' : 'Show'} render props interpolations`}</button>
             {visible && <div className="pt-4">
                 <Spring
@@ -26,6 +18,7 @@ function Demo3DRotation() {
                         shape: 'M20,380 L380,380 L380,380 L200,20 L20,380 Z',
                         textShadow: '0px 5px 0px white',
                         color: 'blue',
+                        number: 100,
                     }}
                     to={{
                         width: 200, //'auto'
@@ -37,27 +30,31 @@ function Demo3DRotation() {
                         shape: 'M20,20 L20,380 L380,380 L380,20 L20,20 Z',
                         textShadow: '0px 5px 15px rgba(255,255,255,0.5)',
                         color: 'yellow',
+                        number: 0,
                     }}
-                    delay={delay}
                     config={(key: string) => {
                         switch (key) {
-                            case 'color': return {...config.slow, delay: 400};
+                            //case 'color': return {...config.slow, delay: 400};
+                            case 'color': return {duration: 2000};
                             default: return config.default;
                         }
                     }}
                 >
-                    {props => <div
-                        style={{
-                            boxShadow: props.boxShadow,
-                            width: props.width,
-                            borderBottom: props.borderBottom,
-                            color: props.color,
-                        }}
-                        className="w-10 h-10 border rounded-md bg-red-400 flex items-center justify-center"
-                    >
-                        <span className="c">Lets go</span>
-                    </div>}
-                </Spring>                
+                    {props =>
+                        <div
+                            style={{
+                                boxShadow: props.boxShadow,
+                                width: props.width,
+                                borderBottom: props.borderBottom,
+                                color: props.color,
+                                transform: props.transform,
+                            }}
+                            className="w-10 h-10 border rounded-md bg-red-400 flex items-center justify-center"
+                        >
+                            <span className="c">Lets go {props.number}</span>
+                        </div>
+                    }
+                </Spring>
             </div>}
         </div>
     );
