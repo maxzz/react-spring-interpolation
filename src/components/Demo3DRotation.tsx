@@ -41,7 +41,7 @@ function Demo3DRotation() {
                     delay={delay}
                     config={(key: string) => {
                         switch (key) {
-                            case 'color': return {...config.slow, delay: 2000};
+                            case 'color': return {...config.slow, delay: 400};
                             default: return config.default;
                         }
                     }}
