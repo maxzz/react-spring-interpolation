@@ -14,10 +14,10 @@ function Demo3DRotation() {
             </button>
 
             <div className="my-2">
-                <label className="flex items-center text-sm text-gray-900">
+                <label className="flex items-center text-sm text-gray-400">
                     <input
                         type="checkbox" 
-                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" 
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 checked:border-gray-100  border-gray-100 rounded bg-gray-400"
                         defaultChecked={showProps} 
                         onClick={() => setShowProps(!showProps)}
                     />
